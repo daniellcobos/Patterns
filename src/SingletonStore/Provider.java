@@ -2,8 +2,7 @@ package SingletonStore;
 
 import java.util.ArrayList;
 
-public class Cashier implements Runnable{
-
+public class Provider implements Runnable{
     private ArrayList<Item> itemList;
     private String id;
     private CentralAccount Ca = CentralAccount.getCentralAccount();
@@ -13,11 +12,11 @@ public class Cashier implements Runnable{
 
         try {
             Thread.sleep(1000);
-        CTransaction transaction = new CTransaction(itemList, id);
-        transactionValue = transaction.doTransactions();
-        transactionHistory.add(transactionValue);
-        System.out.println("Adding " + transactionValue + " To Central account");
-        Ca.addMoney(transactionValue);
+            PTransaction transaction = new PTransaction(itemList, id);
+            transactionValue = transaction.doTransactions();
+            transactionHistory.add(transactionValue);
+            System.out.println("Taking " + transactionValue + " From Central account");
+            Ca.getMoney(transactionValue);
 
         }
         catch(InterruptedException exc){
@@ -25,7 +24,7 @@ public class Cashier implements Runnable{
         }
     }
 
-    public Cashier(ArrayList<Item> itemList, String id) {
+    public Provider(ArrayList<Item> itemList, String id) {
         this.itemList = itemList;
         this.id = id;
     }

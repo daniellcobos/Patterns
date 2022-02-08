@@ -2,7 +2,7 @@ package SingletonStore;
 
 import java.util.ArrayList;
 
-public class Client {
+public class Cart {
     private ArrayList<Item> cart = new ArrayList<Item>();
 
     public void PushtoCart(Item item){
@@ -13,7 +13,7 @@ public class Client {
         return this.cart;
     }
 
-    public Client(ArrayList<Item> cart) {
+    public Cart(ArrayList<Item> cart) {
 
         this.cart = cart;
     }
